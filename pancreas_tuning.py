@@ -11,7 +11,7 @@ scanpy.pp.highly_variable_genes(adata, batch_key="tech", n_top_genes=2000, subse
 scvi.data.setup_anndata(adata, batch_key="tech", layer="counts")
 
 
-tuned_model, analysis = tune_scvi(adata, 2)
+tuned_model, analysis = tune_scvi(adata, 400)
 
 adata.obsm["X_scVI"] = tuned_model.get_latent_representation()
 
