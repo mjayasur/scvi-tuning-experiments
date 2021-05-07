@@ -26,11 +26,12 @@ bdata.obsm["X_scVI"] = default_model.get_latent_representation()
 
 results = {
     "tuned": silhouette(adata, "celltype", "X_scvi"),
-    "default": silhouette(adata, "celltype", "X_scvi"),
+    "default": silhouette(bdata, "celltype", "X_scvi"),
 }
 
 out_file = open("results.json", "w")
 
 json.dump(results, out_file, indent=6)
 
+json.dump(analysis.get_best_config(), open("config.json", "w"), indent=6)
 out_file.close()
